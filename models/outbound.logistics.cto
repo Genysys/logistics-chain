@@ -1,0 +1,99 @@
+namespace outbound.logistics
+
+/*
+* Enumerations
+*/
+enum Markets {
+  o UNITEDKINGDOM
+  o NETHERLANDS
+  o FRANCE
+  o GERMANY
+  o ITALY
+}
+
+/*
+* Participants
+*/
+abstract participant Company identified by companyId {
+  o String companyId
+}
+
+// Manufacturer e.g. Nissan, Renault, Dacia etc. //
+participant Manufacturer extends Company {
+  o String manufacturerName
+}
+
+participant Plant identified by plantId {
+  o String plantId
+  --> Manufacturer owner
+}
+
+participant Compound identified by compoundId {
+  o String compoundId
+  --> Manufacturer owner
+}
+
+// Transportation company, e.g. Haulier, Port of Tyne //
+abstract participant TransportationCompany extends Company {
+  o String companyName
+}
+
+participant Haulier extends TransportationCompany {
+
+}
+
+participant Port extends TransportationCompany {
+
+}
+
+/*
+* Assets
+*/
+abstract asset Vehicle identified by vin {
+  o String vin
+  o String brand
+  o String model
+  o DateTime manufacturedDate optional
+  --> Plant manufacturingPlant optional
+}
+
+asset Car extends Vehicle {
+  o Boolean boot default=true optional
+  o Integer doors default=5 optional
+}
+
+/*
+* Transactions
+*/
+transaction ManufactureCar {
+  o String vin
+  o String brand
+  o String model
+}
+
+/*
+* Events
+*/
+event CarManufactured {
+  o String cardId  
+}
+
+/*
+* Concepts
+*/
+abstract concept Address {
+  o String street
+  o String city
+  o String country
+}
+
+concept UnitedKingdomAddress extends Address {
+  o String postcode
+}
+
+concept route {
+ o Address origin
+ o Address destination
+ o Company sender
+ o Company receiver
+}
