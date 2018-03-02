@@ -1,18 +1,48 @@
-/**
- * Access control rules for tutorial-network
- */
-rule Default {
-    description: "Allow all participants access to all resources"
-    participant: "ANY"
-    operation: ALL
-    resource: "outbound.logistics.**"
-    action: ALLOW
-}
-
 rule SystemACL {
-  description:  "System ACL to permit all access"
+  description:  "Can READ the system registries"
   participant: "ANY"
-  operation: ALL
+  operation: READ
   resource: "org.hyperledger.composer.system.**"
   action: ALLOW
 }
+
+rule NetworkControlPermission {
+  description:  "give admin ALL access to system resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.*"
+  action: ALLOW  
+}
+
+rule ParticipantRegistryControlPermission {
+  description:  "give admin ALL access to network participant types"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "outbound.logistics.participant.*"
+  action: ALLOW  
+}
+
+rule ManufacturerPermissions {
+  description: "A Manufacturer is able to create [build] plants that belong to them"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: ALL
+  resource: "outbound.logistics.participant.Plant"
+  action: ALLOW
+}
+
+rule PlantPermissions {
+  description: "A Manufacturing Plant can only manufacture cars."
+  participant: "outbound.logistics.participant.Plant"
+  operation: READ, UPDATE
+  resource: "outbound.logistics.vehicle.Car"
+  transaction: "outbound.logistics.vehicle.ManufactureCar"
+  action: ALLOW
+}
+
+// rule Default {
+//     description: "Allow all participants access to all resources"
+//     participant: "ANY"
+//     operation: ALL
+//     resource: "outbound.logistics.**"
+//     action: ALLOW
+// }
