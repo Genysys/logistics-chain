@@ -47,6 +47,11 @@ TODO: Write a script to automate this.
 
 You can now run `composer rest-server -c admin@outbound-logistics -n always -w true` to access the API as an admin. 
 
+# Updating The Project
+to make changes to a deployed network, run from the dist folder:
+1. `composer archive create --sourceType dir --sourceName ../`
+2. `composer network update -a ./outbound-logistics@0.0.1.bna -c admin@outbound-logistics`
+
 # Adding participants and issuing identities
 You will likely wish to the run network as a specific participant to see how they can interact with the application. To do this, you need to add participants and create cards by issuing them from the correct authority. 
 
@@ -55,3 +60,5 @@ You will likely wish to the run network as a specific participant to see how the
 2. `composer identity issue -u NI -a outbound.logistics.participant.Manufacturer#NI -c admin@outbound-logistics`
 3. `composer card import -f NI@outbound-logistics.card`
  
+To run as a manufacturer: `composer-rest-server -c NI@outbound-logistics -n always -w true`
+
