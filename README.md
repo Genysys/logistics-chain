@@ -45,7 +45,7 @@ TODO: Write a script to automate this.
 6. `composer network deploy -a ./outbound-logistics@0.0.1.bna -c PeerAdmin@hlfv1 -A admin -S adminpw`
 7. `composer card import -f admin@outbound-logistics.card`
 
-You can now run `composer rest-server -c admin@outbound-logistics -n always -w true` to access the API as an admin. 
+You can now run `composer-rest-server -c admin@outbound-logistics -n always -w true` to access the API as an admin. 
 
 # Updating The Project
 to make changes to a deployed network, run from the dist folder:
