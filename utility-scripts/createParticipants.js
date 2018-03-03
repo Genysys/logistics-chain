@@ -60,9 +60,31 @@ function createManufacturers(bnDef) {
 }
 
 function provideIdentitiesToManufacturers() {
-    return bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#MI', 
+    let renaultIdentity = bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#RM', 
+        'Renault@outbound-logistics', 'true').then((result) => {
+            console.log(`userID = ${result.userID}`);
+            console.log(`userSecret = ${result.userSecret}`);
+        }).catch(function(error) {
+            
+        });
+
+    let nissanIdentity = bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#NI', 
+        'Nissan@outbound-logistics', 'true').then((result) => {
+            console.log(`userID = ${result.userID}`);
+            console.log(`userSecret = ${result.userSecret}`);
+        }).catch(function(error) {
+            
+        });
+
+    
+    let mitsubishiIdentity = bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#MI', 
         'Mitsubishi@outbound-logistics', 'true').then((result) => {
             console.log(`userID = ${result.userID}`);
             console.log(`userSecret = ${result.userSecret}`);
+        }).catch(function(error) {
+            
         });
+
+    return Promise.all([nissanIdentity, renaultIdentity, mitsubishiIdentity]);
+
 }
