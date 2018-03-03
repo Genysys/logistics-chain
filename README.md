@@ -55,7 +55,13 @@ to make changes to a deployed network, run from the dist folder:
 # Adding participants and issuing identities
 You will likely wish to the run network as a specific participant to see how they can interact with the application. To do this, you need to add participants and create cards by issuing them from the correct authority. 
 
-## Add a Manufacturer: 
+## Run Participant Scripts
+
+
+
+## Manually Adding a Participant Example:
+If you wish to create a participant by the command line manually, hee is an example of ading a manufacturer and then importing their card.
+### Add a Manufacturer: 
 1. `composer participant add -d '{"$class":"outbound.logistics.participant.Manufacturer","companyId":"NI","manufacturerName":"Nissan"}' -c admin@outbound-logistics`
 2. `composer identity issue -u NI -a outbound.logistics.participant.Manufacturer#NI -c admin@outbound-logistics`
 3. `composer card import -f NI@outbound-logistics.card`

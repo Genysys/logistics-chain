@@ -13,7 +13,10 @@ function main(error){
                     bnDef.getName(),"  ",bnDef.getVersion());
 
     createManufacturers(bnDef).then(function() {
-        bnUtil.disconnect();
+        provideIdentitiesToManufacturers().then(function() {
+            bnUtil.disconnect();
+        })
+        
     });
     
 }
@@ -54,4 +57,12 @@ function createManufacturers(bnDef) {
         console.log('Error has occured when trying to create a manufacturer. Log:');
         console.log(error);
      })
+}
+
+function provideIdentitiesToManufacturers() {
+    return bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#MI', 
+        'Mitsubishi@outbound-logistics', 'true').then((result) => {
+            console.log(`userID = ${result.userID}`);
+            console.log(`userSecret = ${result.userSecret}`);
+        });
 }
