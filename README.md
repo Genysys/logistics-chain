@@ -68,3 +68,6 @@ If you wish to create a participant by the command line manually, hee is an exam
  
 To run as a manufacturer: `composer-rest-server -c NI@outbound-logistics -n always -w true`
 
+### Add a Plant:
+1. `composer participant add -d '{"$class":"outbound.logistics.participant.Plant","companyId":"NMUK"}' -c NI@outbound-logistics`
+

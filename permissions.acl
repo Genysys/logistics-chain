@@ -1,3 +1,47 @@
+
+
+rule PlantPermissions {
+  description: "A Manufacturing Plant can only manufacture cars."
+  participant: "outbound.logistics.participant.Plant"
+  operation: READ, UPDATE
+  resource: "outbound.logistics.vehicle.Car"
+  transaction: "outbound.logistics.vehicle.ManufactureCar"
+  action: ALLOW
+}
+
+rule ManufacturerAddingParticipant {
+  description: "A Manufacturer is able to create [build] plants that belong to them"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: CREATE
+  resource: "org.hyperledger.composer.system.AddParticipant"
+  action: ALLOW
+}
+
+rule ManufacturerPermissions {
+  description: "A Manufacturer is able to create [build] plants that belong to them"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: CREATE
+  resource: "outbound.logistics.participant.CreatePlant"
+  transaction: "outbound.logistics.participant.CreatePlant"
+  action: ALLOW
+}
+
+rule ManufacturerPermissionsPlant {
+  description: "A Manufacturer is able to create [build] plants that belong to them"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: CREATE
+  resource: "outbound.logistics.participant.Plant"
+  action: ALLOW
+}
+
+rule ParticipantPermissionHistorian {
+  description: "can write HistorianRecord to the Historian"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: CREATE
+  resource: "org.hyperledger.composer.system.HistorianRecord"
+  action: ALLOW  
+}
+
 rule SystemACL {
   description:  "Can READ the system registries"
   participant: "ANY"
@@ -20,23 +64,6 @@ rule ParticipantRegistryControlPermission {
   operation: ALL
   resource: "outbound.logistics.participant.*"
   action: ALLOW  
-}
-
-rule ManufacturerPermissions {
-  description: "A Manufacturer is able to create [build] plants that belong to them"
-  participant: "outbound.logistics.participant.Manufacturer"
-  operation: ALL
-  resource: "outbound.logistics.participant.Plant"
-  action: ALLOW
-}
-
-rule PlantPermissions {
-  description: "A Manufacturing Plant can only manufacture cars."
-  participant: "outbound.logistics.participant.Plant"
-  operation: READ, UPDATE
-  resource: "outbound.logistics.vehicle.Car"
-  transaction: "outbound.logistics.vehicle.ManufactureCar"
-  action: ALLOW
 }
 
 // rule Default {

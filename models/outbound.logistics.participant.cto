@@ -56,6 +56,14 @@ participant DealerStore identified by dealerStoreId {
 }
 
 /*
+* Transactions
+*/
+transaction CreatePlant {
+  o String plantId
+  --> Manufacturer owner
+}
+
+/*
 * Concepts
 */
 abstract concept Address {

@@ -14,7 +14,7 @@ abstract asset Vehicle identified by vin {
   --> Plant manufacturingPlant optional
   --> Dealer finalDestination optional
 }
-
+ 
 asset Car extends Vehicle {
   o Boolean boot default=true optional
   o Integer doors default=5 optional
@@ -33,6 +33,7 @@ transaction ManufactureCar {
   o String model
   o String boot optional
   o Integer door optional
+  --> Plant manufacturingPlant
 }
 
 /*
