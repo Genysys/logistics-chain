@@ -51,6 +51,8 @@ You can now run `composer-rest-server -c admin@outbound-logistics -n always -w t
 to make changes to a deployed network, run from the dist folder:
 1. `composer archive create --sourceType dir --sourceName ../`
 2. `composer network update -a ./outbound-logistics@0.0.1.bna -c admin@outbound-logistics`
+3. `composer card delete -n admin@outbound-logistics`
+4. `composer card import -f admin@outbound-logistics.card`
 
 # Adding participants and issuing identities
 You will likely wish to the run network as a specific participant to see how they can interact with the application. To do this, you need to add participants and create cards by issuing them from the correct authority. 

@@ -1,23 +1,45 @@
-
+rule AllParticipantsCanSeeAllParticipants {
+  description: "All participants should be aware of others in the network. TODO: Should hauliers be able to see each other?"
+  participant: "outbound.logistics.participant.*"
+  operation: READ
+  resource: "outbound.logistics.participant.*"
+  action: ALLOW
+}
 
 rule PlantPermissions {
   description: "A Manufacturing Plant can only manufacture cars."
   participant: "outbound.logistics.participant.Plant"
-  operation: READ, UPDATE
-  resource: "outbound.logistics.vehicle.Car"
+  operation: READ, UPDATE, CREATE
+  resource: "outbound.logistics.vehicle.ManufactureCar"
   transaction: "outbound.logistics.vehicle.ManufactureCar"
   action: ALLOW
 }
 
-rule ManufacturerAddingParticipant {
-  description: "A Manufacturer is able to create [build] plants that belong to them"
-  participant: "outbound.logistics.participant.Manufacturer"
+rule PlantPermissions2 {
+  description: "A Manufacturing Plant can see Cars. TODO: Only ones that it owns?"
+  participant: "outbound.logistics.participant.Plant"
+  operation: CREATE, READ
+  resource: "outbound.logistics.vehicle.Car"
+  action: ALLOW
+}
+
+rule ParticipantsCanAddOtherParticipants {
+  description: "Participants can add other participants"
+  participant: "outbound.logistics.participant.*"
   operation: CREATE
   resource: "org.hyperledger.composer.system.AddParticipant"
   action: ALLOW
 }
 
-rule ManufacturerPermissions {
+rule ManufacturersCanAddParticipants {
+  description: "A Manufacturer is able to create [build] plants that belong to them"
+  participant: "outbound.logistics.participant.*"
+  operation: CREATE
+  resource: "org.hyperledger.composer.system.IssueIdentity"
+  action: ALLOW
+}
+
+rule ManufacturerCanCreatePlants {
   description: "A Manufacturer is able to create [build] plants that belong to them"
   participant: "outbound.logistics.participant.Manufacturer"
   operation: CREATE
@@ -26,17 +48,17 @@ rule ManufacturerPermissions {
   action: ALLOW
 }
 
-rule ManufacturerPermissionsPlant {
-  description: "A Manufacturer is able to create [build] plants that belong to them"
+rule ManufacturerCanReadPlants {
+  description: "A Manufacturer is able to see all plants."
   participant: "outbound.logistics.participant.Manufacturer"
-  operation: CREATE
+  operation: CREATE, READ
   resource: "outbound.logistics.participant.Plant"
   action: ALLOW
 }
 
 rule ParticipantPermissionHistorian {
   description: "can write HistorianRecord to the Historian"
-  participant: "outbound.logistics.participant.Manufacturer"
+  participant: "outbound.logistics.participant.*"
   operation: CREATE
   resource: "org.hyperledger.composer.system.HistorianRecord"
   action: ALLOW  
@@ -65,11 +87,3 @@ rule ParticipantRegistryControlPermission {
   resource: "outbound.logistics.participant.*"
   action: ALLOW  
 }
-
-// rule Default {
-//     description: "Allow all participants access to all resources"
-//     participant: "ANY"
-//     operation: ALL
-//     resource: "outbound.logistics.**"
-//     action: ALLOW
-// }
