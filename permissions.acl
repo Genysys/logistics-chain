@@ -9,7 +9,7 @@ rule AllParticipantsCanSeeAllParticipants {
 rule PlantPermissions {
   description: "A Manufacturing Plant can only manufacture cars."
   participant: "outbound.logistics.participant.Plant"
-  operation: READ, UPDATE, CREATE
+  operation: CREATE
   resource: "outbound.logistics.vehicle.ManufactureCar"
   transaction: "outbound.logistics.vehicle.ManufactureCar"
   action: ALLOW
@@ -57,7 +57,7 @@ rule ManufacturerCanReadPlants {
 }
 
 rule ParticipantPermissionHistorian {
-  description: "can write HistorianRecord to the Historian"
+  description: "Can write HistorianRecord to the Historian"
   participant: "outbound.logistics.participant.*"
   operation: CREATE
   resource: "org.hyperledger.composer.system.HistorianRecord"

@@ -41,9 +41,7 @@ TODO: Write a script to automate this.
 
 ## Running the project
 4. CD into this repository and into the dist folder. e.g. `cd ~/logistics-chain/dist`
-5. `composer archive create --sourceType dir --sourceName ../`
-6. `composer network deploy -a ./outbound-logistics@0.0.1.bna -c PeerAdmin@hlfv1 -A admin -S adminpw`
-7. `composer card import -f admin@outbound-logistics.card`
+5. `sh ./firstRun.sh`
 
 You can now run `composer-rest-server -c admin@outbound-logistics -n always -w true` to access the API as an admin. 
 
