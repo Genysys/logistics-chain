@@ -6,18 +6,18 @@ const cardStore = require('composer-common').FileSystemCardStore
 
 bnUtil.connect(main);
 
-let adminConnection; 
+let adminConnection;
 
-function main(error){
+function main(error) {
 
-    if(error){
+    if (error) {
         console.log(error);
         process.exit(1);
     }
-    
-     let bnDef =  bnUtil.connection.getBusinessNetwork();
-     console.log("Received Definition from Runtime: ",
-                    bnDef.getName(),"  ",bnDef.getVersion());
+
+    let bnDef = bnUtil.connection.getBusinessNetwork();
+    console.log("Received Definition from Runtime: ",
+        bnDef.getName(), "  ", bnDef.getVersion());
 
     participantList = {
         "manufacturers": [
@@ -30,7 +30,7 @@ function main(error){
                 "manufactureName": "Nissan",
                 "plants": [
                     {
-                        
+
                     }
                 ]
             },
@@ -39,80 +39,81 @@ function main(error){
                 "manufactureName": "Mitsubishi"
             }
         ]
-    }                
+    }
 
 
     adminConnection = new AdminConnection();
-    createManufacturers(bnDef, participantList.manufacturers).then(() => {
-        //bnUtil.disconnect();
-    });
-    
+    createManufacturers(bnDef, participantList.manufacturers);
+
 }
 
 
 function createManufacturers(bnDef, manufacturerList) {
 
-    return bnUtil.connection.getParticipantRegistry("outbound.logistics.participant.Manufacturer")
-        .then((manufacturerRegistry) => {
-            
+    bnUtil.connection.getParticipantRegistry("outbound.logistics.participant.Manufacturer")
+        .then(function (manufacturerRegistry) {
+
             let factory = bnDef.getFactory();
-            manufacturerList.forEach((manufacturerData) => {
-                manufacturerRegistry.exists(manufacturerData.manufactureId).then((exists) => {
-                    if(!exists) {
+            manufacturerList.forEach(function (manufacturerData, idx, list) {
+                manufacturerRegistry.exists(manufacturerData.manufactureId).then(function (exists) {
+                    if (!exists) {
                         let manufacturer = factory.newResource('outbound.logistics.participant', 'Manufacturer', manufacturerData.manufactureId);
                         manufacturer.manufacturerName = manufacturerData.manufactureName;
                         console.log('Adding manufacturer...' + manufacturerData.manufactureName);
-                        manufacturerRegistry.add(manufacturer).then(() => {
-                            provideIdentitiesToManufacturers(manufacturerData).then(() => {
+                        manufacturerRegistry.add(manufacturer).then(function () {
+                            return provideIdentitiesToManufacturers(manufacturerData).then(function () {
+                                if(idx === list.length -1) {
+                                    return bnUtil.disconnect();
+                                }
                                 //createPlant(manufacturerData);
                             });
                         });
                     }
                 })
             })
-     }).catch((error) => {
-        console.log('Error has occured when trying to create a manufacturer. Log:');
-        console.log(error);
-     })
+        }).catch(function (error) {
+            console.log('Error has occured when trying to create a manufacturer. Log:');
+            console.log(error);
+        })
 }
 
 function provideIdentitiesToManufacturers(manufacturerData) {
 
-    return bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#' + manufacturerData.manufactureId, 
-         manufacturerData.manufactureName + '@outbound-logistics', 'true').then((identity) => {
-             return importCardForIdentity(manufacturerData.manufactureName + '@outbound-logistics', identity);
-         }).catch((error) => {
-             console.log(error);
-    });
+    return bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#' + manufacturerData.manufactureId,
+        manufacturerData.manufactureName + '@outbound-logistics', 'true').then(function (identity) {
+            return importCardForIdentity(manufacturerData.manufactureName + '@outbound-logistics', identity);
+        }).catch(function (error) {
+            console.log(error);
+        });
 }
 
 function createPlant(manufacturerData) {
-               
-         businessNetworkConnection = new BusinessNetworkConnection({ cardStore: bnUtil.cardStore });                                
-         return businessNetworkConnection.connect(manufacturerData.manufactureName + '@outbound-logistics').then(() => {
-            return businessNetworkConnection.getParticipantRegistry('outbound.logistics.participant.Plant').then((plantRegistry) => {
-                let factory = businessNetworkConnection.getFactory();
-                
-                console.log(manufacturerData);
-            })
-         }).catch((error) => {
-             console.log(error);
-         });
+
+    businessNetworkConnection = new BusinessNetworkConnection({ cardStore: bnUtil.cardStore });
+    return businessNetworkConnection.connect(manufacturerData.manufactureName + '@outbound-logistics').then(function () {
+        return businessNetworkConnection.getParticipantRegistry('outbound.logistics.participant.Plant').then(function (plantRegistry) {
+            let factory = businessNetworkConnection.getFactory();
+
+            console.log(manufacturerData);
+        })
+    }).catch(function (error) {
+        console.log(error);
+    });
 }
 
 function importCardForIdentity(cardName, identity) {
     const connectionProfile = {
-        "name":cardName,
-        "type":"hlfv1",
-        "orderers":[{"url":"grpc://localhost:7050"}],
-        "ca":{
-            "url":"http://localhost:7054",
-            "name":"ca.org1.example.com"
+        "name": cardName,
+        "type": "hlfv1",
+        "orderers": [{ "url": "grpc://localhost:7050" }],
+        "ca": {
+            "url": "http://localhost:7054",
+            "name": "ca.org1.example.com"
         },
-        "peers":[{"requestURL":"grpc://localhost:7051","eventURL":"grpc://localhost:7053"}],
-        "channel":"composerchannel",
-        "mspID":"Org1MSP",
-        "timeout":300
+        "peers": [{ "requestURL": "grpc://localhost:7051", "eventURL": "grpc://localhost:7053" }],
+        "channel": "composerchannel",
+        "mspID": "Org1MSP",
+        "timeout": 300
     };
     const metadata = {
         userName: identity.userID,

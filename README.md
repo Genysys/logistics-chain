@@ -60,7 +60,7 @@ You will likely wish to the run network as a specific participant to see how the
 
 
 ## Manually Adding a Participant Example:
-If you wish to create a participant by the command line manually, hee is an example of ading a manufacturer and then importing their card.
+If you wish to create a participant by the command line manually, here is an example of ading a manufacturer and then importing their card.
 ### Add a Manufacturer: 
 1. `composer participant add -d '{"$class":"outbound.logistics.participant.Manufacturer","companyId":"NI","manufacturerName":"Nissan"}' -c admin@outbound-logistics`
 2. `composer identity issue -u NI -a outbound.logistics.participant.Manufacturer#NI -c admin@outbound-logistics`
