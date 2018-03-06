@@ -1,0 +1,21 @@
+{
+    "manufacturers": [
+        {
+            "manufactureId": "RN",
+            "manufactureName": "Renault"
+        },
+        {
+            "manufactureId": "NI",
+            "manufactureName": "Nissan",
+            "plants": [
+                {
+
+                }
+            ]
+        },
+        {
+            "manufactureId": "MI",
+            "manufactureName": "Mitsubishi"
+        }
+    ]
+}

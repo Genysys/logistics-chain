@@ -4,11 +4,11 @@ const IdCard = require('composer-common').IdCard;
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection
 const cardStore = require('composer-common').FileSystemCardStore
 
-bnUtil.connect(main);
-
+let participantList = require('./participants.json') 
+bnUtil.connect(setUp);
 let adminConnection;
 
-function main(error) {
+function setUp(error) {
 
     if (error) {
         console.log(error);
@@ -19,32 +19,9 @@ function main(error) {
     console.log("Received Definition from Runtime: ",
         bnDef.getName(), "  ", bnDef.getVersion());
 
-    participantList = {
-        "manufacturers": [
-            {
-                "manufactureId": "RN",
-                "manufactureName": "Renault"
-            },
-            {
-                "manufactureId": "NI",
-                "manufactureName": "Nissan",
-                "plants": [
-                    {
-
-                    }
-                ]
-            },
-            {
-                "manufactureId": "MI",
-                "manufactureName": "Mitsubishi"
-            }
-        ]
-    }
-
 
     adminConnection = new AdminConnection();
     createManufacturers(bnDef, participantList.manufacturers);
-
 }
 
 
@@ -62,12 +39,15 @@ function createManufacturers(bnDef, manufacturerList) {
                         console.log('Adding manufacturer...' + manufacturerData.manufactureName);
                         manufacturerRegistry.add(manufacturer).then(function () {
                             return provideIdentitiesToManufacturers(manufacturerData).then(function () {
-                                if(idx === list.length -1) {
+                            }).then(function() {
+                                if (idx === list.length - 1) {
                                     return bnUtil.disconnect();
                                 }
-                                //createPlant(manufacturerData);
                             });
                         });
+                    } else {
+                        console.log("Manufacturers are already in the network.");
+                        return bnUtil.disconnect();
                     }
                 })
             })

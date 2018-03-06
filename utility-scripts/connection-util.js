@@ -9,8 +9,11 @@ module.exports = {
     connection: {},
 
     // 1. This is the function that is called by the app
-    connect : function(callback) {
+    connect : function(callback, cardName) {
         // Create instance of file system card store
+        if(cardName != null) {
+            this.cardName = cardName;
+        }
         const cardStore = new this.cardStore();
         this.connection = new this.BusinessNetworkConnection({ cardStore: cardStore });
 
@@ -24,7 +27,7 @@ module.exports = {
 
     // 2. Disconnects the bn connection
     disconnect : function(callback) {
-        this.connection.disconnect();
+        return this.connection.disconnect();
     },
 
     // 3. Pings the network
@@ -34,6 +37,10 @@ module.exports = {
         }).catch((error)=>{
             callback({}, error);
         });
+    },
+
+    getCardStore : function (callback) {
+        return this.cardStore;
     }
  }
 
