@@ -36,8 +36,8 @@ function createManufacturers(bnDef, manufacturerList) {
                     if (!exists) {
                         let manufacturer = factory.newResource('outbound.logistics.participant', 'Manufacturer', manufacturerData.manufactureId);
                         manufacturer.manufacturerName = manufacturerData.manufactureName;
-                        console.log('Adding manufacturer...' + manufacturerData.manufactureName);
                         manufacturerRegistry.add(manufacturer).then(function () {
+                            console.log('Manufacturer particpant added: ' + manufacturerData.manufactureName);
                             return provideIdentitiesToManufacturers(manufacturerData).then(function () {
                             }).then(function() {
                                 if (idx === list.length - 1) {
@@ -65,20 +65,6 @@ function provideIdentitiesToManufacturers(manufacturerData) {
         }).catch(function (error) {
             console.log(error);
         });
-}
-
-function createPlant(manufacturerData) {
-
-    businessNetworkConnection = new BusinessNetworkConnection({ cardStore: bnUtil.cardStore });
-    return businessNetworkConnection.connect(manufacturerData.manufactureName + '@outbound-logistics').then(function () {
-        return businessNetworkConnection.getParticipantRegistry('outbound.logistics.participant.Plant').then(function (plantRegistry) {
-            let factory = businessNetworkConnection.getFactory();
-
-            console.log(manufacturerData);
-        })
-    }).catch(function (error) {
-        console.log(error);
-    });
 }
 
 function importCardForIdentity(cardName, identity) {

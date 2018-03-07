@@ -12,20 +12,16 @@ function createPlants() {
 
             plantRegistry.exists('NMUK').then(function (exists) {
                 if (!exists) {
-                    let plant = factory.newResource('outbound.logistics.participant', 'Participant', 'NMUK');
-                    plant.plantOwner = '';
-                    console.log('Adding manufacturer...' + manufacturerData.manufactureName);
-                    plantRegistry.add(manufacturer).then(function () {
-                        return provideIdentitiesToManufacturers(manufacturerData).then(function () {
-                        }).then(function() {
-                            if (idx === list.length - 1) {
-                                return bnUtil.disconnect();
-                            }
-                        });
-                    });
+                    let plant = factory.newResource('outbound.logistics.participant', 'Plant', 'NMUK');
+                    plant.owner = factory.newRelationship('outbound.logistics.participant', "Manufacturer", 'NI'); 
+                    
+                    plantRegistry.add(plant).then(function () {
+                        console.log('Plant participant added: ' + 'NMUK');
+                        bnUtil.disconnect();
+                    })
                 } else {
-                    console.log("Manufacturers are already in the network.");
-                    return bnUtil.disconnect();
+                    console.log('Plants have already been added.');
+                    bnUtil.disconnect();
                 }
             })
     });
