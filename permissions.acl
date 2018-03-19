@@ -31,6 +31,14 @@ rule ParticipantsCanAddOtherParticipants {
   action: ALLOW
 }
 
+rule ManufacturersCanAddIssueIdentities {
+  description: "A Manufacturer is able to create [build] plants that belong to them"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: CREATE
+  resource: "org.hyperledger.composer.system.Identity"
+  action: ALLOW
+}
+
 rule ManufacturersCanAddParticipants {
   description: "A Manufacturer is able to create [build] plants that belong to them"
   participant: "outbound.logistics.participant.*"

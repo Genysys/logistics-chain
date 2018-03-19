@@ -6,12 +6,7 @@
         },
         {
             "manufactureId": "NI",
-            "manufactureName": "Nissan",
-            "plants": [
-                {
-
-                }
-            ]
+            "manufactureName": "Nissan"
         },
         {
             "manufactureId": "MI",

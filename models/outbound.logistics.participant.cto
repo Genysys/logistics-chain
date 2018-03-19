@@ -25,6 +25,7 @@ participant Manufacturer extends Company {
 
 participant Plant identified by plantId {
   o String plantId
+  o String description optional
   --> Manufacturer owner
 }
 

@@ -3,10 +3,13 @@ module.exports = {
     // Properties used for creating instance of the BN connection
     cardStore : require('composer-common').FileSystemCardStore,
     BusinessNetworkConnection : require('composer-client').BusinessNetworkConnection,
+    AdminConnection : require('composer-admin').AdminConnection,
+    IdCard : require('composer-common').IdCard,
     cardName : "admin@outbound-logistics",
 
     // Holds the Business Network Connection
     connection: {},
+    adminConnection: {},
 
     // 1. This is the function that is called by the app
     connect : function(callback, cardName) {
@@ -16,6 +19,7 @@ module.exports = {
         }
         const cardStore = new this.cardStore();
         this.connection = new this.BusinessNetworkConnection({ cardStore: cardStore });
+        this.adminConnection = new this.AdminConnection();
 
         // Invoke connect
         return this.connection.connect(this.cardName).then(function(){
@@ -41,6 +45,32 @@ module.exports = {
 
     getCardStore : function (callback) {
         return this.cardStore;
+    },
+
+    importCardForIdentity(cardName, identity) {
+        const connectionProfile = {
+            "name": cardName,
+            "type": "hlfv1",
+            "orderers": [{ "url": "grpc://localhost:7050" }],
+            "ca": {
+                "url": "http://localhost:7054",
+                "name": "ca.org1.example.com"
+            },
+            "peers": [{ "requestURL": "grpc://localhost:7051", "eventURL": "grpc://localhost:7053" }],
+            "channel": "composerchannel",
+            "mspID": "Org1MSP",
+            "timeout": 300
+        };
+        const metadata = {
+            userName: identity.userID,
+            version: 1,
+            enrollmentSecret: identity.userSecret,
+            businessNetwork: 'outbound-logistics'
+        };
+        const card = new this.IdCard(metadata, connectionProfile);
+        console.log("Issuing card for " + identity.userID + "...");
+        return this.adminConnection.importCard(cardName, card);
     }
+    
  }
 
