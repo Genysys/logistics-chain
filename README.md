@@ -63,11 +63,11 @@ You will likely wish to the run network as a specific participant to see how the
 If you wish to create a participant by the command line manually, here is an example of ading a manufacturer and then importing their card.
 ### Add a Manufacturer: 
 1. `composer participant add -d '{"$class":"outbound.logistics.participant.Manufacturer","companyId":"NI","manufacturerName":"Nissan"}' -c admin@outbound-logistics`
-2. `composer identity issue -u NI -a outbound.logistics.participant.Manufacturer#NI -c admin@outbound-logistics`
-3. `composer card import -f NI@outbound-logistics.card`
+2. `composer identity issue -u Nissan -a outbound.logistics.participant.Manufacturer#Nissan -c admin@outbound-logistics`
+3. `composer card import -f Nissan@outbound-logistics.card`
  
-To run as a manufacturer: `composer-rest-server -c NI@outbound-logistics -n always -w true`
+To run as a manufacturer: `composer-rest-server -c Nissan@outbound-logistics -n always -w true`
 
 ### Add a Plant:
-1. `composer participant add -d '{"$class":"outbound.logistics.participant.Plant","companyId":"NMUK"}' -c NI@outbound-logistics`
+1. `composer participant add -d '{"$class":"outbound.logistics.participant.Plant","companyId":"NMUK"}' -c Nissan@outbound-logistics`
 
