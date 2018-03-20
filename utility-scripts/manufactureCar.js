@@ -20,12 +20,14 @@ function manufactureCar() {
     transaction.setPropertyValue('vin', vehicle.transportPlan.vin);
     transaction.setPropertyValue('brand', vehicle.transportPlan.brand.description);
     transaction.setPropertyValue('model', vehicle.transportPlan.model.description);
+    transaction.setPropertyValue('manufacturedDate', new Date())
     transaction.setPropertyValue('manufacturingPlant', manufacturingPlant);
 
     return bnUtil.connection.submitTransaction(transaction).then(()=> {
         console.log("Car: " + vehicle.transportPlan.vin + " Has Been Manufactured By " + vehicle.transportPlan.plant.description);
 
         bnUtil.disconnect();
+        
     }).catch((error) => {
       console.log(error);
       

@@ -8,5 +8,12 @@ function viewAllCars() {
             return carRegistry.exists('VEHICLE1').then((exists) => {
                 console.log(exists);
             });
+        }).then(() => {
+            bnUtil.connection.getTransactionRegistry('outbound.logistics.vehicle.ManufactureCar')
+            .then((manufactureRegistry) => {
+                manufactureRegistry.getAll().then((txs) => {
+                    console.log(txs);
+                })
+            })
         })
 }

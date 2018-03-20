@@ -27,6 +27,7 @@ transaction ManufactureCar {
   o String vin
   o String brand
   o String model
+  o DateTime manufacturedDate
   o String boot optional
   o Integer door optional
   --> Plant manufacturingPlant
