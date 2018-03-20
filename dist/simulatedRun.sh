@@ -8,4 +8,6 @@ cd ~/workspace/logistics-chain/dist
 sh ./firstRun.sh
 cd ~/workspace/logistics-chain/utility-scripts
 node createManufacturers.js
+node createLogisticsTeam.js
 node createPlants.js
+node manufactureCar.js
