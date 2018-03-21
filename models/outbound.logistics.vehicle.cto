@@ -37,6 +37,7 @@ transaction ManufactureCar {
 }
 
 transaction AssignTransportPlan {
+  o String vin
   o Route[] routes
   o DateTime lastUpdated
   o String buyerCode
