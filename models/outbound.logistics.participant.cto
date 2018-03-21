@@ -23,17 +23,18 @@ participant Manufacturer extends Company {
   o String manufacturerName
 }
 
-participant Node identified by nodeId {
+abstract participant Node identified by nodeId {
   o String nodeId
+  o String description optional
+  --> Company owner
 }
 
 participant Plant extends Node {
-  o String description optional
-  --> Manufacturer owner
+
 }
 
 participant Compound extends Node {
-  --> Manufacturer owner
+
 }
 
 participant LogisticsTeam identified by logisticsId {
@@ -60,7 +61,6 @@ participant Dealer extends Company {
 
 participant DealerStore extends Node {
   o String dealerStoreId
-  --> Dealer owner
 }
 
 /*

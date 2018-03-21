@@ -3,7 +3,7 @@ namespace outbound.logistics.vehicle
 import outbound.logistics.participant.Plant
 import outbound.logistics.participant.Dealer
 import outbound.logistics.participant.Address
-import outbound.logistics.participant.Company
+import outbound.logistics.participant.Node
 
 
 /*
@@ -52,6 +52,7 @@ event CarManufactured {
 
 concept TransportPlan {
   o Route[] routes
+  o Node finalDestination
   o DateTime lastUpdated 
   o String buyerCode
 }
@@ -59,6 +60,6 @@ concept TransportPlan {
 concept Route {
  o Address origin
  o Address destination
- --> Company from
- --> Company to
+ --> Node from
+ --> Node to
 }

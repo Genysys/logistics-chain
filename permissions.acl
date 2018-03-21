@@ -64,6 +64,14 @@ rule ManufacturerCanCreatePlants {
   action: ALLOW
 }
 
+rule ManufacturerCanCreateCompounds {
+  description: "A Manufacturer is able to create [build] compounds that belong to them"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: CREATE, READ, UPDATE
+  resource: "outbound.logistics.participant.Compound"
+  action: ALLOW
+}
+
 rule ManufacturerCanReadPlants {
   description: "A Manufacturer is able to see and create plants."
   participant: "outbound.logistics.participant.Manufacturer"
