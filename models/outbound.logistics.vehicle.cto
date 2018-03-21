@@ -2,6 +2,9 @@ namespace outbound.logistics.vehicle
 
 import outbound.logistics.participant.Plant
 import outbound.logistics.participant.Dealer
+import outbound.logistics.participant.Address
+import outbound.logistics.participant.Company
+
 
 /*
 * Assets
@@ -11,14 +14,14 @@ abstract asset Vehicle identified by vin {
   o String brand
   o String model
   o DateTime manufacturedDate 
-  --> Plant manufacturingPlant optional
-  --> Dealer finalDestination optional
+  o TransportPlan transportPlan optional
+  --> Plant manufacturingPlant
 }
  
 asset Car extends Vehicle {
-  o Boolean boot default=true optional
-  o Integer doors default=5 optional
+
 }
+
 
 /*
 * Transactions
@@ -30,7 +33,13 @@ transaction ManufactureCar {
   o DateTime manufacturedDate
   o String boot optional
   o Integer door optional
-  --> Plant manufacturingPlant
+  --> Plant manufacturingPlant 
+}
+
+transaction AssignTransportPlan {
+  o Route[] routes
+  o DateTime lastUpdated
+  o String buyerCode
 }
 
 /*
@@ -38,4 +47,17 @@ transaction ManufactureCar {
 */
 event CarManufactured {
   o String vin
+}
+
+concept TransportPlan {
+  o Route[] routes
+  o DateTime lastUpdated 
+  o String buyerCode
+}
+
+concept Route {
+ o Address origin
+ o Address destination
+ --> Company from
+ --> Company to
 }

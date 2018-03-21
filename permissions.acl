@@ -23,6 +23,14 @@ rule PlantPermissions2 {
   action: ALLOW
 }
 
+rule LogisticsTeamCanViewCars {
+  description: "A Logistics Team Can View All Cars"
+  participant: "outbound.logistics.participant.LogisticsTeam"
+  operation: READ
+  resource: "outbound.logistics.vehicle.Car"
+  action: ALLOW
+}
+
 rule ParticipantsCanAddOtherParticipants {
   description: "Participants can add other participants"
   participant: "outbound.logistics.participant.*"
@@ -31,7 +39,7 @@ rule ParticipantsCanAddOtherParticipants {
   action: ALLOW
 }
 
-rule ManufacturersCanAddIssueIdentities {
+rule ManufacturersCanCreateIdentities {
   description: "A Manufacturer is able to create [build] plants that belong to them"
   participant: "outbound.logistics.participant.Manufacturer"
   operation: CREATE
@@ -39,7 +47,7 @@ rule ManufacturersCanAddIssueIdentities {
   action: ALLOW
 }
 
-rule ManufacturersCanAddParticipants {
+rule ManufacturersCanIssueIdentities {
   description: "A Manufacturer is able to create [build] plants that belong to them"
   participant: "outbound.logistics.participant.*"
   operation: CREATE
@@ -57,10 +65,26 @@ rule ManufacturerCanCreatePlants {
 }
 
 rule ManufacturerCanReadPlants {
-  description: "A Manufacturer is able to see all plants."
+  description: "A Manufacturer is able to see and create plants."
   participant: "outbound.logistics.participant.Manufacturer"
-  operation: CREATE, READ
+  operation: CREATE, READ, UPDATE
   resource: "outbound.logistics.participant.Plant"
+  action: ALLOW
+}
+
+rule ManufacturerCanCreateLogisticsTeams {
+  description: "A Manufacturer is able to create Logistics Teams"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: CREATE, READ, UPDATE
+  resource: "outbound.logistics.participant.LogisticsTeam"
+  action: ALLOW
+}
+
+rule ManufacturerCanViewCars {
+  description: "A Manufacturer is able view all cars"
+  participant: "outbound.logistics.participant.Manufacturer"
+  operation: READ
+  resource: "outbound.logistics.vehicle.Car"
   action: ALLOW
 }
 

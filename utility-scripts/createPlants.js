@@ -33,7 +33,6 @@ function createPlants() {
 }
 
 function provideIdentitiesToPlants() {
-
     return bnUtil.connection.issueIdentity('outbound.logistics.participant.Plant#' + vehicle.transportPlan.plant.plant,
         vehicle.transportPlan.plant.description + '@outbound-logistics', 'true').then(function (identity) {
             console.log(identity);

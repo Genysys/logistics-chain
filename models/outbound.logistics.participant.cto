@@ -23,15 +23,22 @@ participant Manufacturer extends Company {
   o String manufacturerName
 }
 
-participant Plant identified by plantId {
-  o String plantId
+participant Node identified by nodeId {
+  o String nodeId
+}
+
+participant Plant extends Node {
   o String description optional
   --> Manufacturer owner
 }
 
-participant Compound identified by compoundId {
-  o String compoundId
+participant Compound extends Node {
   --> Manufacturer owner
+}
+
+participant LogisticsTeam identified by logisticsId {
+  o String logisticsId
+  --> Manufacturer company
 }
 
 // Transportation company, e.g. Haulier, Port of Tyne //
@@ -43,7 +50,7 @@ participant Haulier extends TransportationCompany {
 
 }
 
-participant Port extends TransportationCompany {
+participant Port extends Node {
 
 }
 
@@ -51,9 +58,9 @@ participant Dealer extends Company {
 
 }
 
-participant DealerStore identified by dealerStoreId {
+participant DealerStore extends Node {
   o String dealerStoreId
-  o Address location
+  --> Dealer owner
 }
 
 /*
@@ -67,6 +74,7 @@ transaction CreatePlant {
 /*
 * Concepts
 */
+
 abstract concept Address {
   o String street
   o String city
@@ -77,9 +85,3 @@ concept UnitedKingdomAddress extends Address {
   o String postcode
 }
 
-concept route {
- o Address origin
- o Address destination
- o Company sender
- o Company receiver
-}
