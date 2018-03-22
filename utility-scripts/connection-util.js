@@ -23,6 +23,9 @@ module.exports = {
 
         // Invoke connect
         return this.connection.connect(this.cardName).then(function () {
+            if(callback === null) {
+                return;
+            }
             callback();
         }).catch((error) => {
             callback(error);

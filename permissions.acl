@@ -23,6 +23,22 @@ rule PlantPermissions2 {
   action: ALLOW
 }
 
+rule PortCompanyCanCreatePorts {
+  description: "A Port Company can create more ports"
+  participant: "outbound.logistics.participant.PortCompany"
+  operation: CREATE, READ, UPDATE
+  resource: "outbound.logistics.participant.Port"
+  action: ALLOW
+}
+
+rule DealerCanCreateDealerships {
+  description: "A Port Company can create more ports"
+  participant: "outbound.logistics.participant.Dealer"
+  operation: CREATE, READ, UPDATE
+  resource: "outbound.logistics.participant.Dealership"
+  action: ALLOW
+}
+
 rule LogisticsTeamCanViewCars {
   description: "A Logistics Team Can View All Cars"
   participant: "outbound.logistics.participant.LogisticsTeam"
@@ -36,22 +52,6 @@ rule ParticipantsCanAddOtherParticipants {
   participant: "outbound.logistics.participant.*"
   operation: CREATE
   resource: "org.hyperledger.composer.system.AddParticipant"
-  action: ALLOW
-}
-
-rule ManufacturersCanCreateIdentities {
-  description: "A Manufacturer is able to create [build] plants that belong to them"
-  participant: "outbound.logistics.participant.Manufacturer"
-  operation: CREATE
-  resource: "org.hyperledger.composer.system.Identity"
-  action: ALLOW
-}
-
-rule ManufacturersCanIssueIdentities {
-  description: "A Manufacturer is able to create [build] plants that belong to them"
-  participant: "outbound.logistics.participant.*"
-  operation: CREATE
-  resource: "org.hyperledger.composer.system.IssueIdentity"
   action: ALLOW
 }
 
@@ -101,6 +101,22 @@ rule ManufacturerCanViewCars {
   participant: "outbound.logistics.participant.Manufacturer"
   operation: READ
   resource: "outbound.logistics.vehicle.Car"
+  action: ALLOW
+}
+
+rule ParticipantsCanCreateIdentities {
+  description: "Participants have the ability to add identities to other participants. This is limited to the CREATE rights they have from other rules."
+  participant: "outbound.logistics.participant.*"
+  operation: CREATE
+  resource: "org.hyperledger.composer.system.Identity"
+  action: ALLOW
+}
+
+rule ManufacturersCanIssueIdentities {
+  description: "Participants have the ability to issue identities to other participants. This is limited to the CREATE rights they have from other rules."
+  participant: "outbound.logistics.participant.*"
+  operation: CREATE
+  resource: "org.hyperledger.composer.system.IssueIdentity"
   action: ALLOW
 }
 

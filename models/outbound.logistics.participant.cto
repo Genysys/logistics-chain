@@ -51,6 +51,10 @@ participant Haulier extends TransportationCompany {
 
 }
 
+participant PortCompany extends TransportationCompany {
+
+}
+
 participant Port extends Node {
 
 }
@@ -59,8 +63,8 @@ participant Dealer extends Company {
 
 }
 
-participant DealerStore extends Node {
-  o String dealerStoreId
+participant Dealership extends Node {
+  
 }
 
 /*
