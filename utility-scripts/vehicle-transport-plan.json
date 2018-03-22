@@ -1,0 +1,648 @@
+{
+    "transportPlan": {
+        "id": 1694893674,
+        "vehicleIdentifier": "VEHICLE1",
+        "vehicleCreateDate": "31 Jan 2018,  04:40 AM",
+        "vin": "VEHICLE1",
+        "version": "Z34RGLSALGYZ34EGAC--H",
+        "buyerCode": "6BNL10",
+        "ownerAccount": null,
+        "destinationCode": "62NL071067",
+        "bbsseffDate": "31 Jan 2018,  12:00 AM",
+        "forcastOffline": "7 Feb 2018,  12:00 AM",
+        "actualOffline": "7 Feb 2018,  12:00 AM",
+        "actualPlantExit": null,
+        "financialOwnerCategoryChangeDate": "22 Feb 2018,  12:00 AM",
+        "prioritizationRequestor": null,
+        "prioritizationComment": null,
+        "priority": false,
+        "stockShift": false,
+        "backTrack": false,
+        "lastUpdated": "8 Mar 2018,  04:35 PM",
+        "offTransportScheme": false,
+        "userDefinedScheme": false,
+        "scheduleError": false,
+        "mco": false,
+        "mcoInvoiceDate": null,
+        "mut": false,
+        "markedForScrapedDate": null,
+        "scrapedDate": null,
+        "parkingPosition": null,
+        "breakFifo": false,
+        "length": 4245,
+        "width": 1845,
+        "height": 1315,
+        "weight": 1600,
+        "deliveryZone": "DZNLKPT07___",
+        "transportZone": null,
+        "zoneGeographic": "ZG_NLD_04",
+        "systemSource": {
+            "id": 2,
+            "systemSourceCode": "02",
+            "systemSourceDescription": "EVL",
+            "lastUpdateActivity": "26 May 2016,  12:41 PM"
+        },
+        "model": {
+            "id": 690677699,
+            "systemSource": "02",
+            "model": "Z34R",
+            "description": "370Z COUPE MY18",
+            "systemSourceId": {
+                "id": 2,
+                "systemSourceCode": "02",
+                "systemSourceDescription": "EVL",
+                "lastUpdateActivity": "26 May 2016,  12:41 PM"
+            }
+        },
+        "exteriorColour": {
+            "id": 302402,
+            "hostSystemSource": "02",
+            "exteriorColour": "QAB",
+            "description": "PEARL WHITE",
+            "systemSource": {
+                "id": 2,
+                "systemSourceCode": "02",
+                "systemSourceDescription": "EVL",
+                "lastUpdateActivity": "26 May 2016,  12:41 PM"
+            }
+        },
+        "plant": {
+            "id": 33,
+            "plant": "P033",
+            "description": "NML",
+            "inUse": "N",
+            "country": null
+        },
+        "country": {
+            "id": 302763,
+            "isoCountry": "528",
+            "name": "NETHERLANDS",
+            "calendarReference": null,
+            "calendar": null
+        },
+        "financialOwnerCategory": {
+            "id": 2,
+            "financialOwner": "02",
+            "description": "Headquarters"
+        },
+        "otdFailureReason": null,
+        "brand": {
+            "id": 14,
+            "brand": "NI",
+            "description": "Nissan"
+        },
+        "otdStatus": {
+            "id": 1,
+            "otdStatus": "1",
+            "description": "OK"
+        },
+        "indiceContramarque": null,
+        "rbu": {
+            "id": 303360,
+            "rbu": "62",
+            "shortName": "BNL",
+            "name": "BNL    BENELUX"
+        },
+        "logisticsVehicleOrder": {
+            "id": 1883149405,
+            "vehicleOrderRef": "BNL0877931",
+            "confirmedDeliveryDateLate": "12 Apr 2018,  12:00 AM",
+            "dealerRequestedDeliveryDate": "23 Mar 2018,  12:00 AM",
+            "nonDelivery": false,
+            "revisedDeliveryDate": "12 Apr 2018,  12:00 AM",
+            "vehicleOrderClass": {
+                "id": 421576,
+                "orderClass": "PR",
+                "description": "PRIVATE"
+            }
+        },
+        "vehicleTransitNode": [
+            {
+                "id": 1814386206,
+                "vehicleTransitNodeSeq": "1",
+                "plannedTransitNode": "Y",
+                "contractualWaitTime": "3",
+                "averageWaitTime": null,
+                "currentLocation": "N",
+                "stockingPoint": "N",
+                "onTransport": "N",
+                "must": "N",
+                "endOfApproach": "N",
+                "finalDeliveryCompund": "N",
+                "transitNode": {
+                    "id": 409111,
+                    "transitNode": "FCJPNGEN_NIS",
+                    "transitNodeDesc": "GENERIC JAPAN COMPOUND",
+                    "transitType": "FC",
+                    "partner": null,
+                    "addressLineOne": "ALL PLANTS IN JAPAN",
+                    "addressLineTwo": null,
+                    "addressLineThree": null,
+                    "city": "JAPAN",
+                    "postCode": "2",
+                    "calendar": null,
+                    "latitude": 36.39440261666337,
+                    "longtitude": -221.24883413314822,
+                    "transitNodeType": {
+                        "id": 4,
+                        "transitNodeTypeCode": "FC",
+                        "transitNodeTypeDesc": "Factory Compound"
+                    },
+                    "logisticsPartner": {
+                        "id": 128,
+                        "logisticsPartnerCode": "NIS",
+                        "logisticsPartnerDesc": "NISSAN"
+                    },
+                    "country": {
+                        "id": 302725,
+                        "isoCountry": "392",
+                        "name": "JAPAN",
+                        "calendarReference": null,
+                        "calendar": null
+                    }
+                },
+                "transportLoad": null,
+                "vehicleTransport": {
+                    "id": 1814386207,
+                    "fromTransitNodeSequence": "1",
+                    "toTransitNodeSequence": "2",
+                    "contractualLeadTime": "2",
+                    "averageLeadTime": null,
+                    "transportMethod": {
+                        "id": 8,
+                        "transportmethod": "TK",
+                        "description": "Truck"
+                    },
+                    "transportLoad": null,
+                    "ltarMeasurementClass": {
+                        "id": 417277,
+                        "ltarMeasurementClass": "A",
+                        "description": "Approach"
+                    },
+                    "logisticsPartner": {
+                        "id": 139,
+                        "logisticsPartnerCode": "OTH",
+                        "logisticsPartnerDesc": "OTHERS"
+                    },
+                    "logisticsDataStatus": {
+                        "id": 1,
+                        "logisticsDataStatus": "1",
+                        "description": "CREATED"
+                    }
+                },
+                "systemSource": {
+                    "id": 2,
+                    "systemSourceCode": "02",
+                    "systemSourceDescription": "EVL",
+                    "lastUpdateActivity": "26 May 2016,  12:41 PM"
+                },
+                "vehicleLogisticsEvent": [
+                    {
+                        "id": 1883149483,
+                        "vehicleLogisticsEventId": "101",
+                        "initialPlanDate": "7 Feb 2018,  12:00 AM",
+                        "contractualPlanDate": "7 Feb 2018,  12:00 AM",
+                        "averagePlanDate": null,
+                        "actualDate": "13 Feb 2018,  12:00 AM",
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303374,
+                            "scopeStatus": "18",
+                            "description": "Comp In"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 1,
+                            "logisticsEvent": "GI",
+                            "description": "Gate In"
+                        },
+                        "vehicleLogisticsService": null
+                    },
+                    {
+                        "id": 1883149484,
+                        "vehicleLogisticsEventId": "102",
+                        "initialPlanDate": "12 Feb 2018,  12:00 AM",
+                        "contractualPlanDate": "12 Feb 2018,  12:00 AM",
+                        "averagePlanDate": null,
+                        "actualDate": "13 Feb 2018,  12:00 AM",
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303362,
+                            "scopeStatus": "19",
+                            "description": "Comp Out"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 2,
+                            "logisticsEvent": "GO",
+                            "description": "Gate Out"
+                        },
+                        "vehicleLogisticsService": null
+                    }
+                ],
+                "logisticsDataStatus": {
+                    "id": 1,
+                    "logisticsDataStatus": "1",
+                    "description": "CREATED"
+                }
+            },
+            {
+                "id": 1883149438,
+                "vehicleTransitNodeSeq": "2",
+                "plannedTransitNode": "Y",
+                "contractualWaitTime": "15",
+                "averageWaitTime": null,
+                "currentLocation": "N",
+                "stockingPoint": "N",
+                "onTransport": "Y",
+                "must": "N",
+                "endOfApproach": "N",
+                "finalDeliveryCompund": "N",
+                "transitNode": {
+                    "id": 447046,
+                    "transitNode": "POJPNGEN_NIS",
+                    "transitNodeDesc": "NISSAN GENERIC PORT",
+                    "transitType": null,
+                    "partner": null,
+                    "addressLineOne": null,
+                    "addressLineTwo": null,
+                    "addressLineThree": null,
+                    "city": null,
+                    "postCode": null,
+                    "calendar": null,
+                    "latitude": 35.64158381398175,
+                    "longtitude": -219.86301317811012,
+                    "transitNodeType": {
+                        "id": 1,
+                        "transitNodeTypeCode": "PO",
+                        "transitNodeTypeDesc": "Port"
+                    },
+                    "logisticsPartner": {
+                        "id": 130,
+                        "logisticsPartnerCode": "NSA",
+                        "logisticsPartnerDesc": "NISSAN SHIPPING AGENTS"
+                    },
+                    "country": {
+                        "id": 302725,
+                        "isoCountry": "392",
+                        "name": "JAPAN",
+                        "calendarReference": null,
+                        "calendar": null
+                    }
+                },
+                "transportLoad": null,
+                "vehicleTransport": {
+                    "id": 1883149448,
+                    "fromTransitNodeSequence": "2",
+                    "toTransitNodeSequence": "3",
+                    "contractualLeadTime": "43",
+                    "averageLeadTime": null,
+                    "transportMethod": {
+                        "id": 6,
+                        "transportmethod": "VS",
+                        "description": "Vessel"
+                    },
+                    "transportLoad": {
+                        "id": 1787039570,
+                        "reference": "51069",
+                        "name": "HOEGH DETROIT"
+                    },
+                    "ltarMeasurementClass": {
+                        "id": 417284,
+                        "ltarMeasurementClass": "C",
+                        "description": "Capillary"
+                    },
+                    "logisticsPartner": {
+                        "id": 67,
+                        "logisticsPartnerCode": "EMC",
+                        "logisticsPartnerDesc": "EMC"
+                    },
+                    "logisticsDataStatus": {
+                        "id": 1,
+                        "logisticsDataStatus": "1",
+                        "description": "CREATED"
+                    }
+                },
+                "systemSource": {
+                    "id": 2,
+                    "systemSourceCode": "02",
+                    "systemSourceDescription": "EVL",
+                    "lastUpdateActivity": "26 May 2016,  12:41 PM"
+                },
+                "vehicleLogisticsEvent": [
+                    {
+                        "id": 1883149486,
+                        "vehicleLogisticsEventId": "103",
+                        "initialPlanDate": "14 Feb 2018,  12:00 AM",
+                        "contractualPlanDate": "15 Feb 2018,  04:39 AM",
+                        "averagePlanDate": null,
+                        "actualDate": "14 Feb 2018,  12:00 AM",
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303375,
+                            "scopeStatus": "20",
+                            "description": "In Port"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 1,
+                            "logisticsEvent": "GI",
+                            "description": "Gate In"
+                        },
+                        "vehicleLogisticsService": null
+                    },
+                    {
+                        "id": 1883149488,
+                        "vehicleLogisticsEventId": "104",
+                        "initialPlanDate": "1 Mar 2018,  12:00 AM",
+                        "contractualPlanDate": "2 Mar 2018,  04:39 AM",
+                        "averagePlanDate": null,
+                        "actualDate": "21 Feb 2018,  12:00 AM",
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303363,
+                            "scopeStatus": "25",
+                            "description": "O/Board"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 2,
+                            "logisticsEvent": "GO",
+                            "description": "Gate Out"
+                        },
+                        "vehicleLogisticsService": null
+                    }
+                ],
+                "logisticsDataStatus": {
+                    "id": 1,
+                    "logisticsDataStatus": "1",
+                    "description": "CREATED"
+                }
+            },
+            {
+                "id": 1883149461,
+                "vehicleTransitNodeSeq": "3",
+                "plannedTransitNode": "Y",
+                "contractualWaitTime": "4",
+                "averageWaitTime": null,
+                "currentLocation": "N",
+                "stockingPoint": "Y",
+                "onTransport": "N",
+                "must": "N",
+                "endOfApproach": "Y",
+                "finalDeliveryCompund": "Y",
+                "transitNode": {
+                    "id": 989709,
+                    "transitNode": "PONLDAMS_KCT",
+                    "transitNodeDesc": "KCT AMSTERDAM",
+                    "transitType": null,
+                    "partner": null,
+                    "addressLineOne": "AMSTERDAM (PORT) HOL KCT",
+                    "addressLineTwo": "MALTAWEG 3",
+                    "addressLineThree": null,
+                    "city": "AMSTERDAM",
+                    "postCode": "1044 AH",
+                    "calendar": null,
+                    "latitude": 52.419667054956804,
+                    "longtitude": 4.783797436393798,
+                    "transitNodeType": {
+                        "id": 1,
+                        "transitNodeTypeCode": "PO",
+                        "transitNodeTypeDesc": "Port"
+                    },
+                    "logisticsPartner": {
+                        "id": 112,
+                        "logisticsPartnerCode": "KPT",
+                        "logisticsPartnerDesc": "KOOPMAN AUTOTRANSPORT"
+                    },
+                    "country": {
+                        "id": 302763,
+                        "isoCountry": "528",
+                        "name": "NETHERLANDS",
+                        "calendarReference": null,
+                        "calendar": null
+                    }
+                },
+                "transportLoad": null,
+                "vehicleTransport": {
+                    "id": 1883149472,
+                    "fromTransitNodeSequence": "3",
+                    "toTransitNodeSequence": "4",
+                    "contractualLeadTime": "1",
+                    "averageLeadTime": null,
+                    "transportMethod": {
+                        "id": 8,
+                        "transportmethod": "TK",
+                        "description": "Truck"
+                    },
+                    "transportLoad": null,
+                    "ltarMeasurementClass": {
+                        "id": 417284,
+                        "ltarMeasurementClass": "C",
+                        "description": "Capillary"
+                    },
+                    "logisticsPartner": {
+                        "id": 112,
+                        "logisticsPartnerCode": "KPT",
+                        "logisticsPartnerDesc": "KOOPMAN AUTOTRANSPORT"
+                    },
+                    "logisticsDataStatus": {
+                        "id": 1,
+                        "logisticsDataStatus": "1",
+                        "description": "CREATED"
+                    }
+                },
+                "systemSource": {
+                    "id": 2,
+                    "systemSourceCode": "02",
+                    "systemSourceDescription": "EVL",
+                    "lastUpdateActivity": "26 May 2016,  12:41 PM"
+                },
+                "vehicleLogisticsEvent": [
+                    {
+                        "id": 1883149489,
+                        "vehicleLogisticsEventId": "105",
+                        "initialPlanDate": "5 Apr 2018,  12:00 AM",
+                        "contractualPlanDate": "5 Apr 2018,  12:00 AM",
+                        "averagePlanDate": null,
+                        "actualDate": null,
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303364,
+                            "scopeStatus": "40",
+                            "description": "Stk In"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 1,
+                            "logisticsEvent": "GI",
+                            "description": "Gate In"
+                        },
+                        "vehicleLogisticsService": null
+                    },
+                    {
+                        "id": 1883149492,
+                        "vehicleLogisticsEventId": "106",
+                        "initialPlanDate": "5 Apr 2018,  12:00 AM",
+                        "contractualPlanDate": "5 Apr 2018,  12:00 AM",
+                        "averagePlanDate": null,
+                        "actualDate": null,
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303379,
+                            "scopeStatus": "65",
+                            "description": "TI Issued / VIN Assigned"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 7,
+                            "logisticsEvent": "EX",
+                            "description": "Expediable"
+                        },
+                        "vehicleLogisticsService": null
+                    },
+                    {
+                        "id": 1883149494,
+                        "vehicleLogisticsEventId": "107",
+                        "initialPlanDate": "5 Apr 2018,  12:00 AM",
+                        "contractualPlanDate": "5 Apr 2018,  12:00 AM",
+                        "averagePlanDate": null,
+                        "actualDate": null,
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": null,
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 6,
+                            "logisticsEvent": "PR",
+                            "description": "Prep"
+                        },
+                        "vehicleLogisticsService": null
+                    },
+                    {
+                        "id": 1883149497,
+                        "vehicleLogisticsEventId": "108",
+                        "initialPlanDate": "11 Apr 2018,  12:00 AM",
+                        "contractualPlanDate": "11 Apr 2018,  12:00 AM",
+                        "averagePlanDate": null,
+                        "actualDate": null,
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303368,
+                            "scopeStatus": "85",
+                            "description": "Dep Out / 2nd Transit"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 2,
+                            "logisticsEvent": "GO",
+                            "description": "Gate Out"
+                        },
+                        "vehicleLogisticsService": null
+                    }
+                ],
+                "logisticsDataStatus": {
+                    "id": 1,
+                    "logisticsDataStatus": "1",
+                    "description": "CREATED"
+                }
+            },
+            {
+                "id": 1883149478,
+                "vehicleTransitNodeSeq": "4",
+                "plannedTransitNode": "Y",
+                "contractualWaitTime": "0",
+                "averageWaitTime": null,
+                "currentLocation": "N",
+                "stockingPoint": "N",
+                "onTransport": "N",
+                "must": "N",
+                "endOfApproach": "N",
+                "finalDeliveryCompund": "N",
+                "transitNode": {
+                    "id": 1198715,
+                    "transitNode": "62071067 001",
+                    "transitNodeDesc": "LEENDERT VAN DEN BORN B.V",
+                    "transitType": null,
+                    "partner": null,
+                    "addressLineOne": "BELDER 35",
+                    "addressLineTwo": null,
+                    "addressLineThree": null,
+                    "city": null,
+                    "postCode": "4704 RK\r",
+                    "calendar": null,
+                    "latitude": null,
+                    "longtitude": null,
+                    "transitNodeType": {
+                        "id": 13,
+                        "transitNodeTypeCode": "DL",
+                        "transitNodeTypeDesc": "Dealer"
+                    },
+                    "logisticsPartner": null,
+                    "country": {
+                        "id": 302763,
+                        "isoCountry": "528",
+                        "name": "NETHERLANDS",
+                        "calendarReference": null,
+                        "calendar": null
+                    }
+                },
+                "transportLoad": null,
+                "vehicleTransport": null,
+                "systemSource": {
+                    "id": 2,
+                    "systemSourceCode": "02",
+                    "systemSourceDescription": "EVL",
+                    "lastUpdateActivity": "26 May 2016,  12:41 PM"
+                },
+                "vehicleLogisticsEvent": [
+                    {
+                        "id": 1883149499,
+                        "vehicleLogisticsEventId": "109",
+                        "initialPlanDate": "12 Apr 2018,  12:00 AM",
+                        "contractualPlanDate": "12 Apr 2018,  12:00 AM",
+                        "averagePlanDate": null,
+                        "actualDate": null,
+                        "contractualLeadTime": 0.0,
+                        "averageLeadTime": null,
+                        "eventOwner": "02",
+                        "scopeStatus": {
+                            "id": 303381,
+                            "scopeStatus": "90",
+                            "description": "Dlr Arrival"
+                        },
+                        "madStatus": null,
+                        "logisticsEvent": {
+                            "id": 4,
+                            "logisticsEvent": "DE",
+                            "description": "Deliver"
+                        },
+                        "vehicleLogisticsService": null
+                    }
+                ],
+                "logisticsDataStatus": {
+                    "id": 1,
+                    "logisticsDataStatus": "1",
+                    "description": "CREATED"
+                }
+            }
+        ],
+        "vehicleTransitNodeDeviation": []
+    },
+    "vehicleSerices": []
+}
