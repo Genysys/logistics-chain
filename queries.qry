@@ -1,5 +1,0 @@
-query AllCars {
-  description: "Returns all cars the network"
-  statement:
-    SELECT outbound.logistics.vehicle.Car
-}
