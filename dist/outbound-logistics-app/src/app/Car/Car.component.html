@@ -1,0 +1,280 @@
+<div class="modal fade" id="addAssetModal" tabindex="-1" role="dialog" aria-labelledby="addAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addAssetModalLabel">Add Asset</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+
+
+          
+
+            
+              <div class="form-group text-left">
+                <label for="boot">boot</label>
+                
+                  <input formControlName="boot" type="checkbox" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="doors">doors</label>
+                
+                  <input formControlName="doors" type="number" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="vin">vin</label>
+                
+                  <input formControlName="vin" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="brand">brand</label>
+                
+                  <input formControlName="brand" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="model">model</label>
+                
+                  <input formControlName="model" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="manufacturedDate">manufacturedDate</label>
+                
+                  <input formControlName="manufacturedDate" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="manufacturingPlant">manufacturingPlant</label>
+                
+                    <textarea formControlName="manufacturingPlant" class="form-control" rows="3"></textarea>
+                
+              </div>
+            
+          
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="addAsset(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="updateAssetModal" tabindex="-1" role="dialog" aria-labelledby="updateAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="updateAssetModalLabel">Update Asset</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+
+
+          
+            <div class="form-group text-left">
+              <label for="boot">boot</label>
+
+              
+                <input [ngModel]="boot" formControlName="boot" type="checkbox" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="doors">doors</label>
+
+              
+                <input [ngModel]="doors" formControlName="doors" type="number" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="vin">vin</label>
+
+              
+                <input [ngModel]="vin"formControlName="vin" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="brand">brand</label>
+
+              
+                <input [ngModel]="brand"formControlName="brand" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="model">model</label>
+
+              
+                <input [ngModel]="model"formControlName="model" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="manufacturedDate">manufacturedDate</label>
+
+              
+                <input [ngModel]="manufacturedDate"formControlName="manufacturedDate" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="manufacturingPlant">manufacturingPlant</label>
+
+              
+                
+                  <textarea [ngModel]="manufacturingPlant" formControlName="manufacturingPlant" class="form-control" rows="3"></textarea>
+                
+              
+
+            </div>
+          
+
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="updateAsset(myForm)" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deleteAssetModalLabel">Delete Asset</h4>
+      </div>
+      <form [formGroup]="myForm" (ngSubmit)="deleteAsset()">
+        <div class="modal-body">
+          Are you sure you want to delete this asset?
+        </div>
+        <div class="modal-footer">
+          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+	<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+		<strong>Error:</strong> {{errorMessage}}
+	</div>
+  <h1 id='assetName'>Car</h1>
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button (click)="resetForm()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAssetModal">Add Asset</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-responsive table-striped">
+        <thead class="thead">
+          <tr class="thead-cols">
+            
+                <th class="info">boot</th>
+            
+                <th class="info">doors</th>
+            
+                <th class="info">vin</th>
+            
+                <th class="info">brand</th>
+            
+                <th class="info">model</th>
+            
+                <th class="info">manufacturedDate</th>
+            
+                <th class="info">manufacturingPlant</th>
+            
+              <th class="info">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of allAssets">
+
+            
+                <td>{{asset.boot}}</td>
+            
+                <td>{{asset.doors}}</td>
+            
+                <td>{{asset.vin}}</td>
+            
+                <td>{{asset.brand}}</td>
+            
+                <td>{{asset.model}}</td>
+            
+                <td>{{asset.manufacturedDate}}</td>
+            
+                <td>{{asset.manufacturingPlant}}</td>
+            
+            <td>
+              <button (click)="getForm(asset.vin);" type="button" class="btn btn-success" data-toggle="modal" data-target="#updateAssetModal">Update Asset</button>
+
+              <button (click)="setId(asset.vin);" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAssetModal">Delete Asset</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
