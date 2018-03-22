@@ -1,7 +1,7 @@
 const bnUtil = require('./connection-util');
 let vehicle = require('./vehicle-transport-plan.json') 
 
-bnUtil.connect(createLogisticsTeam, 'Nissan@outbound-logistics');
+bnUtil.connect(createLogisticsTeam, vehicle.transportPlan.brand.brand + '@outbound-logistics');
 
 
 function createLogisticsTeam() {
@@ -19,24 +19,18 @@ function createLogisticsTeam() {
                     
                     logisticsTeamRegistry.add(logisticsTeam).then(function () {
                         console.log('Logistics participant added: ' + 'EULogisticsNissan');
-                        return provideIdentityLogisticsTeam().then(function () {
+                        return bnUtil.provideIdentity('outbound.logistics.participant.LogisticsTeam', 'EULogisticsNissan', false).then(function () {
                             return bnUtil.disconnect();
                         })
+                    }).catch((erorr) => {
+                        console.log(error);
                     })
                 } else {
-                    console.log('Logistics Team have already been added.');
+                    console.log('Logistics Team has already been added.');
                     bnUtil.disconnect();
                 }
             })
+    }).catch((error) => {
+        console.log(erorr);
     });
-}
-
-function provideIdentityLogisticsTeam() {
-    return bnUtil.connection.issueIdentity('outbound.logistics.participant.LogisticsTeam#EULogisticsNissan',
-        'EULogisticsNissan@outbound-logistics', 'true').then(function (identity) {
-            console.log(identity);
-            return bnUtil.importCardForIdentity('EULogisticsNissan@outbound-logistics', identity);
-        }).catch(function (error) {
-            console.log(error);
-        });
 }

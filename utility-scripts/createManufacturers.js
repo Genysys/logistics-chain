@@ -32,8 +32,8 @@ function createManufacturers(bnDef, manufacturerList) {
                         let manufacturer = factory.newResource('outbound.logistics.participant', 'Manufacturer', manufacturerData.manufactureId);
                         manufacturer.manufacturerName = manufacturerData.manufactureName;
                         manufacturerRegistry.add(manufacturer).then(function () {
-                            console.log('Manufacturer particpant added: ' + manufacturerData.manufactureName);
-                            return provideIdentitiesToManufacturers(manufacturerData).then(function () {
+                            console.log('Manufacturer particpant added: ' + manufacturerData.manufactureId);
+                            return bnUtil.provideIdentity('outbound.logistics.participant.Manufacturer', manufacturerData.manufactureId, true).then(function () {
                             }).then(function() {
                                 if (idx === list.length - 1) {
                                     return bnUtil.disconnect();
@@ -50,14 +50,4 @@ function createManufacturers(bnDef, manufacturerList) {
             console.log('Error has occured when trying to create a manufacturer. Log:');
             console.log(error);
         })
-}
-
-function provideIdentitiesToManufacturers(manufacturerData) {
-
-    return bnUtil.connection.issueIdentity('outbound.logistics.participant.Manufacturer#' + manufacturerData.manufactureId,
-        manufacturerData.manufactureName + '@outbound-logistics', {issuer: true}).then(function (identity) {
-            return bnUtil.importCardForIdentity(manufacturerData.manufactureName + '@outbound-logistics', identity);
-        }).catch(function (error) {
-            console.log(error);
-        });
 }

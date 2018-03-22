@@ -11,3 +11,4 @@ node createManufacturers.js
 node createLogisticsTeam.js
 node createPlants.js
 node manufactureCar.js
+node createRelevantNissanNodes.js

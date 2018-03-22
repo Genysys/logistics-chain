@@ -20,7 +20,7 @@ To set up on Ubuntu, run the following commands:
 3. `./prereqs-ubuntu.sh`
 
 ## Composer Tools 
-* `npm install -g composer-cli`
+* `npm install -g composer-cli@0.16.5`
 * `npm install -g composer-rest-server`
 * `npm install -g generator-hyperledger-composer`
 * `npm install -g yo`

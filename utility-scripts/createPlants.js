@@ -1,7 +1,7 @@
 const bnUtil = require('./connection-util');
 let vehicle = require('./vehicle-transport-plan.json') 
 
-bnUtil.connect(createPlants, vehicle.transportPlan.brand.description+'@outbound-logistics');
+bnUtil.connect(createPlants, vehicle.transportPlan.brand.brand+'@outbound-logistics');
 
 
 function createPlants() {
@@ -20,7 +20,7 @@ function createPlants() {
                     
                     plantRegistry.add(plant).then(function () {
                         console.log('Plant participant added: ' + vehicle.transportPlan.plant.plant);
-                        return provideIdentitiesToPlants().then(function () {
+                        return bnUtil.provideIdentity('outbound.logistics.participant.Plant', vehicle.transportPlan.plant.plant, false).then(function () {
                             return bnUtil.disconnect();
                         })
                     })
@@ -30,14 +30,4 @@ function createPlants() {
                 }
             })
     });
-}
-
-function provideIdentitiesToPlants() {
-    return bnUtil.connection.issueIdentity('outbound.logistics.participant.Plant#' + vehicle.transportPlan.plant.plant,
-        vehicle.transportPlan.plant.description + '@outbound-logistics', 'true').then(function (identity) {
-            console.log(identity);
-            return bnUtil.importCardForIdentity(vehicle.transportPlan.plant.description + '@outbound-logistics', identity);
-        }).catch(function (error) {
-            console.log(error);
-        });
 }

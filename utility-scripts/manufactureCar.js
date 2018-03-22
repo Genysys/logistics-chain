@@ -1,7 +1,7 @@
 const bnUtil = require('./connection-util');
 let vehicle = require('./vehicle-transport-plan.json')
 
-bnUtil.connect(manufactureCar, vehicle.transportPlan.plant.description + '@outbound-logistics');
+bnUtil.connect(manufactureCar, vehicle.transportPlan.plant.plant + '@outbound-logistics');
 
 function manufactureCar() {
 
