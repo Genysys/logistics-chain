@@ -1,15 +1,34 @@
 namespace outbound.logistics.auction
 
 import outbound.logistics.participant.TransportationCompany
+import outbound.logistics.vehicle.Route
+import outbound.logistics.participant.LogisticsTeam
+import outbound.logistics.vehicle.Vehicle
+
+asset TransportContractAuction identified by transportContractBiddingId {
+  o String transportContractBiddingId
+  o Bid[] bids
+  o Route route
+  o DateTime expectedDeliveryDate optional
+  --> Vehicle vehicle
+  --> LogisticsTeam managingLogisticsTeam
+  o Boolean auctionComplete default=false
+}
 
 asset TransportContract identified by transportContractId {
   o String transportContractId
-  o Bid[] bids
-
+  o DateTime creationDate
+  o Double paymentAmount
+  o Boolean fulfilled optional
 }
 
 transaction Bid {
   o Double bidValue
+  --> TransportContractAuction auction
   --> TransportationCompany bidder
+}
 
+transaction endAuction {
+  --> TransportContractAuction transportContractBidding
+  --> LogisticsTeam logisticsTeamEndingAuction
 }
