@@ -49,28 +49,5 @@ function createDealerCompany() {
       
       bnUtil.disconnect();
     });
-
-    // vehicle.transportPlan.vehicleTransitNode.forEach(node, index => { 
-    //     console.log(node.transitNode.transitNode);
-    // });
-
-    // vehicle.transportPlan.vehicleTransitNode.forEach(node => {
-
-    //     if (node.transitNode.transitNodeType.transitNodeTypeDesc === "Dealer") {
-    //         bnUtil.connection.getParticipantRegistry("outbound.logistics.participant.Dealer")
-    //             .then((dealerRegistry) => {
-
-    //                 let dealer = factory.newResource('outbound.logistics.participant', 'Dealer', 'Leendert van den Born');
-
-    //                 dealerRegistry.add(dealer).then(function () {
-    //                     console.log('Dealer participant added: ' + 'Leendert van den Born');
-                        
-    //                 }).catch((error) => {
-    //                     console.log(error);
-    //                 })
-    //             });
-    //     }
-    // });
-
 }
 

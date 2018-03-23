@@ -42,6 +42,10 @@ transaction AssignTransportPlan {
   o TransportPlan transportPlan
 }
 
+transaction deliverVehicle {
+  o String vin
+}
+
 /*
 * Concepts
 */

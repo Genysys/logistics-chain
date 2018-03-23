@@ -7,7 +7,7 @@ import outbound.logistics.vehicle.Vehicle
 
 asset TransportContractAuction identified by transportContractBiddingId {
   o String transportContractBiddingId
-  o Bid[] bids
+  o Bid[] bids optional
   o Route route
   o DateTime expectedDeliveryDate optional
   --> Vehicle vehicle
