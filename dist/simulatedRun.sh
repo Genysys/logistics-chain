@@ -13,3 +13,4 @@ node createPlants.js
 node manufactureCar.js
 node createRelevantNissanNodes.js
 node createPortCompanyAndNode.js
+node createDealerCompanyAndNode.js
