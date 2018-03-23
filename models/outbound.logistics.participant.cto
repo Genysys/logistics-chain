@@ -1,17 +1,6 @@
 namespace outbound.logistics.participant 
 
 /*
-* Enumerations
-*/
-enum Markets {
-  o UNITEDKINGDOM
-  o NETHERLANDS
-  o FRANCE
-  o GERMANY
-  o ITALY
-}
-
-/*
 * Participants
 */
 abstract participant Company identified by companyId {
@@ -26,6 +15,7 @@ participant Manufacturer extends Company {
 abstract participant Node identified by nodeId {
   o String nodeId
   o String description optional
+  o Address address optional
   --> Company owner
 }
 

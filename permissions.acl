@@ -6,6 +6,14 @@ rule AllParticipantsCanSeeAllParticipants {
   action: ALLOW
 }
 
+rule LogisticsTeamCanViewCars {
+  description: "A Logistics Team Can View All Cars"
+  participant: "outbound.logistics.participant.LogisticsTeam"
+  operation: READ, UPDATE
+  resource: "outbound.logistics.vehicle.Car"
+  action: ALLOW
+}
+
 rule PlantPermissions {
   description: "A Manufacturing Plant can only manufacture cars."
   participant: "outbound.logistics.participant.Plant"
@@ -39,14 +47,6 @@ rule DealerCanCreateDealerships {
   action: ALLOW
 }
 
-rule LogisticsTeamCanViewCars {
-  description: "A Logistics Team Can View All Cars"
-  participant: "outbound.logistics.participant.LogisticsTeam"
-  operation: READ
-  resource: "outbound.logistics.vehicle.Car"
-  action: ALLOW
-}
-
 rule ParticipantsCanAddOtherParticipants {
   description: "Participants can add other participants"
   participant: "outbound.logistics.participant.*"
@@ -61,6 +61,15 @@ rule ManufacturerCanCreatePlants {
   operation: CREATE
   resource: "outbound.logistics.participant.CreatePlant"
   transaction: "outbound.logistics.participant.CreatePlant"
+  action: ALLOW
+}
+
+rule LogisticsTeamCanAssignTransportPlans {
+  description: "Logistics team can assign transport plans to cars they manage"
+  participant: "outbound.logistics.participant.LogisticsTeam"
+  operation: CREATE
+  resource: "outbound.logistics.vehicle.AssignTransportPlan"
+  transaction: "outbound.logistics.vehicle.AssignTransportPlan"
   action: ALLOW
 }
 
@@ -126,6 +135,14 @@ rule ParticipantPermissionHistorian {
   operation: CREATE
   resource: "org.hyperledger.composer.system.HistorianRecord"
   action: ALLOW  
+}
+
+rule ParticipantsCanUpdateAssets {
+  description:  "Can update assets by default. Which assets that can be updated will be determined by other rules."
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.UpdateAsset"
+  action: ALLOW
 }
 
 rule SystemACL {

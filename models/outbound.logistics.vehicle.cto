@@ -4,6 +4,7 @@ import outbound.logistics.participant.Plant
 import outbound.logistics.participant.Dealer
 import outbound.logistics.participant.Address
 import outbound.logistics.participant.Node
+import outbound.logistics.participant.TransportationCompany
 
 
 /*
@@ -38,9 +39,25 @@ transaction ManufactureCar {
 
 transaction AssignTransportPlan {
   o String vin
+  o TransportPlan transportPlan
+}
+
+/*
+* Concepts
+*/
+concept TransportPlan {
   o Route[] routes
-  o DateTime lastUpdated
+  --> Node finalDestination
+  o DateTime lastUpdated 
   o String buyerCode
+}
+
+concept Route {
+ --> Node from
+ --> Node to
+ --> TransportationCompany transportationCompany optional
+ o Boolean routeComplete default=false optional 
+ o Markets market optional
 }
 
 /*
@@ -50,16 +67,14 @@ event CarManufactured {
   o String vin
 }
 
-concept TransportPlan {
-  o Route[] routes
-  o Node finalDestination
-  o DateTime lastUpdated 
-  o String buyerCode
-}
-
-concept Route {
- o Address origin
- o Address destination
- --> Node from
- --> Node to
+/*
+* Enumerations
+*/
+enum Markets {
+  o UNITEDKINGDOM
+  o NETHERLANDS
+  o FRANCE
+  o GERMANY
+  o ITALY
+  o JAPAN
 }

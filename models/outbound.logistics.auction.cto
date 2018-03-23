@@ -1,0 +1,15 @@
+namespace outbound.logistics.auction
+
+import outbound.logistics.participant.TransportationCompany
+
+asset TransportContract identified by transportContractId {
+  o String transportContractId
+  o Bid[] bids
+
+}
+
+transaction Bid {
+  o Double bidValue
+  --> TransportationCompany bidder
+
+}
